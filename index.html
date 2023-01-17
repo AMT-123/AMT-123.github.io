@@ -1,18 +1,28 @@
-hello AMT
+<html>
 <script type="text/javascript">
     function time() {
-        var Week, Week_s, Day;
+        let Week, Week_s, Day;
         Week = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-        var date = new Date();
-        year = date.getFullYear();//获取年份
-        month = date.getMonth() + 1;//获取月份
-        day = date.getDate();
-        hours = date.getHours();
-        minutes = date.getMinutes();
-        seconds = date.getSeconds();
+        const date = new Date();
+        const year = date.getFullYear();//获取年份
+        const month = date.getMonth() + 1;//获取月份
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
         Week_s = date.getDay();
         document.getElementById("time").innerHTML = year + "年"
             + month + "月" + day + "日" + "\t" + hours + ":" + minutes + ":" + seconds + "\t" + Week[Week_s];
-    };
+        const dateStart = new Date("2022-11-12");
+        const difValue = (date - dateStart) / (1000 * 60 * 60 * 24);
+        document.getElementById("diff").innerHTML = "在一起已经" + difValue.toString() + "天";
+    }
+
     setInterval("time()", 1000);//每隔1000毫秒会调用一次函数
 </script>
+<body onload="time()">
+当前时间：<span id="time"></span><br>
+<br>
+AMT & JXZ <span id="diff"></span>
+</body>
+</html>
